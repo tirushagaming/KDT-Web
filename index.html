@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS GAMES | Premium PC Game Downloads</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body data-theme="dark">
+
+    <header>
+        <a href="#" class="logo" onclick="app.navigate('home')">NEXUS</a>
+
+        <div class="search-box">
+            <i class="fas fa-search" style="position: absolute; left: 15px; top: 12px; color: #666;"></i>
+            <input type="text" id="global-search" placeholder="Search 5,000+ games..."
+                oninput="app.handleSearch(this.value)">
+        </div>
+
+        <nav style="display: flex; gap: 20px; align-items: center;">
+            <i class="fas fa-moon" id="theme-toggle" style="cursor:pointer;" onclick="app.toggleTheme()"></i>
+            <div id="auth-status"></div>
+        </nav>
+    </header>
+
+    <div id="main-content">
+    </div>
+
+    <footer
+        style="padding: 50px 5%; background: var(--card-bg); border-top: 1px solid var(--glass); text-align: center;">
+        <div style="margin-bottom: 20px;">
+            <i class="fab fa-facebook fa-2x" style="margin: 0 15px; cursor: pointer;"></i>
+            <i class="fab fa-discord fa-2x" style="margin: 0 15px; cursor: pointer;"></i>
+            <i class="fab fa-youtube fa-2x" style="margin: 0 15px; cursor: pointer;"></i>
+        </div>
+        <p>&copy; 2026 Nexus Gaming Portal. All files hosted on secure mirrors.</p>
+        <i class="fas fa-lock" style="margin-top: 20px; opacity: 0.3; cursor: pointer;" onclick="app.showLogin()"></i>
+    </footer>
+
+    <div id="admin-panel">
+        <aside class="admin-sidebar">
+            <h2 style="margin-bottom: 30px; color: var(--primary);">CMS Dashboard</h2>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+                <button class="btn" onclick="app.showAdminSection('add-game')"><i class="fas fa-plus"></i> Add
+                    Game</button>
+                <button class="btn" onclick="app.showAdminSection('manage-games')"><i class="fas fa-tasks"></i> Manage
+                    Games</button>
+                <button class="btn" onclick="app.showAdminSection('settings')"><i class="fas fa-cog"></i>
+                    Settings</button>
+                <button class="btn" style="margin-top: 50px; background: #ff4444;"
+                    onclick="app.logoutAdmin()">Logout</button>
+            </div>
+        </aside>
+        <main class="admin-content" id="admin-view-area">
+        </main>
+    </div>
+
+    <div id="toast-container"></div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

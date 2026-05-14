@@ -1,0 +1,275 @@
+        :root {
+            --primary: #00d4ff;
+            --secondary: #7000ff;
+            --bg-dark: #05070a;
+            --card-bg: #11141d;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text-main: #e0e0e0;
+            --accent-glow: 0 0 15px rgba(0, 212, 255, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --glass: rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* --- UI COMPONENTS --- */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            box-shadow: var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-shadow: var(--accent-glow);
+            text-decoration: none;
+        }
+
+        .search-box {
+            flex: 0 1 400px;
+            position: relative;
+            margin: 0 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 40px;
+            background: var(--glass);
+            border: 1px solid var(--glass);
+            border-radius: 25px;
+            color: white;
+            outline: none;
+        }
+
+        /* --- HERO BANNER --- */
+        .hero {
+            height: 450px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), var(--bg-dark)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            margin-bottom: 40px;
+        }
+
+        /* --- CATEGORIES BAR --- */
+        .category-scroll {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding: 10px 5% 20px;
+            scrollbar-width: none;
+        }
+
+        .cat-tag {
+            padding: 8px 18px;
+            background: var(--card-bg);
+            border: 1px solid var(--glass);
+            border-radius: 20px;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .cat-tag.active {
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-weight: bold;
+        }
+
+        /* --- GAME CARDS --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 5% 50px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--glass);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--accent-glow);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* --- ADMIN DASHBOARD --- */
+        #admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 2000;
+            display: none;
+            grid-template-columns: 250px 1fr;
+        }
+
+        .admin-sidebar {
+            background: var(--card-bg);
+            border-right: 1px solid var(--glass);
+            padding: 20px;
+        }
+
+        .admin-content {
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: #1e232d;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* --- TOASTS --- */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 3000;
+        }
+
+        .toast {
+            background: var(--card-bg);
+            border-left: 5px solid var(--primary);
+            padding: 15px 25px;
+            margin-top: 10px;
+            border-radius: 4px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .search-box {
+                order: 3;
+                flex: 1 1 100%;
+                margin: 0;
+            }
+
+            .hero {
+                height: 300px;
+                text-align: center;
+            }
+
+            #admin-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-sidebar {
+                display: none;
+            }
+        }
